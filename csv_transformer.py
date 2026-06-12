@@ -15,7 +15,7 @@ def clean_row(row):
     elif age_as_float < 18:
         age_group = "child"
     else:
-            age_group = "adult"
+        age_group = "adult"
 
     return {
         "name": row["Name"].strip(),
