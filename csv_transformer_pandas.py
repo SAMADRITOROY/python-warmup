@@ -3,6 +3,7 @@ import numpy as np
 
 
 def clean_titanic(df):
+    df = df.copy()
     bin_edges = [0, 18, np.inf]
     bin_labels = ["child", "adult"]
     df["age_group"] = pd.cut(df["Age"], bins=bin_edges, right=False, labels=bin_labels, ordered=False)
@@ -17,7 +18,6 @@ def clean_titanic(df):
 
 def main():
     df = pd.read_csv("titanic.csv")
-    print(df)
     df = clean_titanic(df)
     df.to_csv("titanic_cleaned_by_pandas.csv", index=False)
 
