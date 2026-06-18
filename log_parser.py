@@ -49,8 +49,14 @@ def summarize_logs(log_entries):
         hour_of_day = log_entry.timestamp.hour
         count_per_hour[hour_of_day] = count_per_hour.get(hour_of_day, 0)+1
     
+    # TODO: top_5_messages chains sorted->dict->keys->list (4 conversions).
+    #       The sort yields (message, count) tuples; pull messages directly instead.
     top_5_messages = list(dict(sorted(count_per_msg.items(), key=lambda item: (-item[1], item[0]))[:5]).keys())
+
+    # TODO: builds a full sorted list of hours just to take [0]. Use max() with a
+    #       key for a single-pass busiest-hour lookup instead of sorting all hours.
     sorted_hours_by_business = list(dict(sorted(count_per_hour.items(), key=lambda item: (-item[1], item[0]))).keys())
+    
     return LogSummary(count_per_level, top_5_messages, sorted_hours_by_business[0])
 
 def main():

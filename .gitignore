@@ -219,4 +219,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 titanic_cleaned.csv
+titanic_cleaned_by_pandas.csv
 pride_word_counted.csv
+log.txt
