@@ -1,13 +1,16 @@
 from log_generator import generate_log_lines
 import re
 
+
 def test_generate_log_lines_with_no_parameters():
     log_lines = generate_log_lines()
     assert len(log_lines) == 10
 
+
 def test_generate_log_lines_with_custom_number_of_lines():
     log_lines = generate_log_lines(5)
     assert len(log_lines) == 5
+
 
 def test_generate_log_lines_has_correct_format():
     log_lines = generate_log_lines(10)

@@ -1,5 +1,6 @@
 import csv
 
+
 def clean_row(row):
     age_as_string = row["Age"]
     age_as_float = float(age_as_string) if age_as_string else None
@@ -9,7 +10,7 @@ def clean_row(row):
 
     fare = row["Fare"]
     fare_as_float = float(fare) if fare else None
-    
+
     if age_as_float is None:
         age_group = "unknown"
     elif age_as_float < 18:
@@ -21,10 +22,12 @@ def clean_row(row):
         "name": row["Name"].strip(),
         "p_class": p_class_as_int,
         "fare": fare_as_float,
-        "age_group": age_group
+        "age_group": age_group,
     }
 
+
 cleaned_rows = []
+
 
 def main():
     with open("titanic.csv", newline="") as f:
@@ -39,7 +42,6 @@ def main():
         writer.writeheader()
         writer.writerows(cleaned_rows)
 
+
 if __name__ == "__main__":
     main()
-
-
