@@ -39,7 +39,7 @@ def fare_summary_by_class(df):
     return df
 
 
-def merge_titanic_with_pclass_lookup(df):
+def titanic_with_pclass_details(df):
     df = df.copy()
     pclass_lookup = pd.DataFrame(
         {
@@ -58,14 +58,17 @@ def main():
     df_clean = clean_titanic(df)
     df_clean.to_csv("titanic_cleaned_by_pandas.csv", index=False)
 
-    print(fare_summary_by_class(df))
+    fare_summary_by_class(df).reset_index().to_csv(
+        "fare_summary_by_class.csv", index=False
+    )
 
-    print(survival_rate_by_age_and_sex(df_clean))
+    survival_rate_by_age_and_sex(df_clean).reset_index().to_csv(
+        "survival_rate_by_age_and_sex.csv", index=False
+    )
 
-    print("length of titanic before merge: {0}".format(len(df)))
-    merged = merge_titanic_with_pclass_lookup(df)
-    print("length of titanic after merge: {0}".format(len(merged)))
-    print(merged.head())
+    titanic_with_pclass_details(df).to_csv(
+        "titanic_with_pclass_details.csv", index=False
+    )
 
 
 if __name__ == "__main__":

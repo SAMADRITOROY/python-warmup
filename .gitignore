@@ -221,4 +221,7 @@ __marimo__/
 titanic_cleaned.csv
 titanic_cleaned_by_pandas.csv
 pride_word_counted.csv
+fare_summary_by_class.csv
+survival_rate_by_age_and_sex.csv
+titanic_with_pclass_details.csv
 log.txt
